@@ -1,0 +1,50 @@
+body {
+	background-color: #1c1c5a;
+}
+
+h1 {
+	color: #fff;
+	text-align: center;
+	font: bold 35px Arial;
+}
+
+p {
+	font: bold 15px arial;
+}
+
+#janela {
+	background-color: #fff;
+	font: normal 15px arial, sans-serif;
+	border-radius: 7px;
+	width: 350px;
+	margin: auto;
+	padding: 10px;
+	box-shadow: #0e0e2b 4px 4px 4px;
+	text-align: center;
+}
+
+#flista {
+	font: normal 10px Arial;
+	color: #7e7e7e;
+	margin-bottom: -25px;
+	line-height: 22px;
+}
+
+#flista span {
+	margin: 0 5px 0 5px;
+	font: normal 12px Calistoga;
+	color: #000;
+}
+
+#res {
+	margin: 10px;
+	font: normal 14px arial;
+	line-height: 18px;
+}
+
+footer {
+	color: #fff;
+	text-align: center;
+	font: italic 13px arial;
+	margin: 20px;
+}
