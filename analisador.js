@@ -1,31 +1,32 @@
 let valores = []
-let menor = 0
-let maior = 0
-let soma = 0
-let res = document.getElementById('res')
-let n = document.getElementById('fnum')
+let res = document.querySelector('#res')
+let n = document.querySelector('#fnum')
+let tempo1
+let tempo2
+
+n.addEventListener("keypress", function(event) {
+	if (event.key === "Enter") {
+		event.preventDefault()
+		document.querySelector('#adicionar').click()
+	}
+})
 
 function adicionar() {
-	let lista = document.getElementById('flista')
+	let lista = document.querySelector('#flista')
 	let item = document.createElement('span')
 	let num = Number(n.value)
-
-	if (num > 100 || num < 1) {
-		alert("Valor inválido!")
+	
+	if (n.value == '') {
+		geraErro(0)
+	} else if (num > 100 || num < 1) {
+		geraErro(1)
 	} else if (valores.indexOf(num) != -1) {
-		alert("Este número já foi utilizado!")
+		geraErro(2)
 	} else {
-		soma += num
 		res.innerHTML = ''
 		valores.push(num)
-		if (menor == 0) {
-			menor = num
+		if (valores.length == 1) {
 			lista.innerHTML = ''
-		}
-		if (num > maior) {
-			maior = num
-		} else if (num < menor) {
-			menor = num
 		}
 		item.innerHTML = num
 		lista.appendChild(item)
@@ -40,12 +41,44 @@ function adicionar() {
 function finalizar() {
 	res.innerHTML = ''
 	if (valores.length < 2) {
-		alert("Adicione pelo menos 2 números!")
+		geraErro(3)
 	} else {
+		let soma = 0
+		for (let total of valores) {
+			soma += total
+		}
+		valores.sort((a, b) => a - b)
 		res.innerHTML =
 			`No total, ${valores.length} números foram inseridos.<br>
-			O maior número inserido foi ${maior} e o menor foi ${menor}.<br>
+			O maior número inserido foi ${valores[valores.length-1]} e o menor foi ${valores[0]}.<br>
 			A soma de todos os valores é igual a ${soma}.<br>
 			A média dos valores é igual a ${soma / valores.length}.<br>`
 	}
+}
+
+function geraErro(erro) {
+	let msg = document.querySelector('#aviso-erro')
+	msg.style.opacity ='1'
+	switch(erro) {
+		case 0:
+			msg.innerText='Digite um número!'
+			break
+		case 1:
+			msg.innerText='O número digitado deve estar entre 1 e 100!'
+			break
+		case 2:
+			msg.innerText='Este número já foi utilizado!'
+			break
+		case 3:
+			msg.innerText='Adicione pelo menos dois números!'
+			break
+	}
+	clearTimeout(tempo1)
+	clearTimeout(tempo2)
+	tempo1 = setTimeout(function() {
+		msg.style.opacity ='0'
+		tempo2 = setTimeout(function() {
+			msg.innerText=''
+		}, 600)
+	}, 2800)
 }

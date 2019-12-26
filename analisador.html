@@ -10,20 +10,19 @@
 	<header>
 		<h1>Analisador de Números</h1>
 	</header>
-	<section id="janela">
+	<div id="aviso-erro" class="caixa erro"></div>
+	<section id="janela" class="caixa">
 		<div>
-			<p>Insira os números (entre 1 e 100):</p>
+			<p>Insira o número (de 1 a 100):</p>
 			<input type="number" name="fnum" id="fnum" placeholder="Insere aí!">
-			<input type="button" name="adicionar" value="Adicionar" onclick="adicionar()">
+			<input type="button" name="adicionar" id="adicionar" value="Adicionar" onclick="adicionar()">
 			<br><p>Números Adicionados:</p>
 			<section id="flista">
-				(Ainda não foram adicionados números)
+				Ainda não foi adicionado nenhum número
 			</section>
 			<br><br><input type="button" id="finalizar" value="Finalizar" onclick="finalizar()">
 		</div>
-		<div id="res">
-			
-		</div>
+		<div id="res"></div>
 	</section>
 	<footer>&copy; WhatTheFunk Group</footer>
 	<script src="analisador.js"></script>
